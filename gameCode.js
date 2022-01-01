@@ -77,10 +77,24 @@ const bananaFarmButton = document.getElementById('bananaFarmButton');
 // Creates an item called the banana farm with 2 bps
 const bananaFarm = new GameItem(50, "banana farm", 2, bananaFarmButton);
 
-// Buys a tree on click of the buy button
+// Buys a farm on click of the buy button
 bananaFarmButton.addEventListener('click', () => {  
     bananaFarm.buy(bananaAmount);
     bananaAmount =- bananaFarm.cost;
+
+    if (bananaAmount < 0) {
+        bananaAmount = 0;
+    }
+})
+
+const labourButton = document.getElementById("labourButton");
+
+const slaveLabour = new GameItem(200, "minion labour", 20, labourButton);
+
+// Buys a slave on click of the buy button
+labourButton.addEventListener('click', () => {  
+    slaveLabour.buy(bananaAmount);
+    bananaAmount =- slaveLabour.cost;
 
     if (bananaAmount < 0) {
         bananaAmount = 0;
@@ -91,5 +105,6 @@ bananaFarmButton.addEventListener('click', () => {
 setInterval(() => {
     bananaAmount = bananaAmount + bananaTree.profit();
     bananaAmount = bananaAmount + bananaFarm.profit();
+    bananaAmount = bananaAmount + slaveLabour.profit();
     bananaCounter.innerHTML = `THE MINION HAS EATEN ${bananaAmount} BANANAS`;
 }, 1000)
