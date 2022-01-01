@@ -11,7 +11,7 @@ let bananaAmount = 0;
 feedButton.addEventListener('click', () => {
     minionSong.play();
     bananaAmount++;
-    bananaCounter.innerHTML = `THE MINION HAS EATEN ${bananaAmount} BANANAS`;
+    bananaCounter.innerHTML = `YOU HAVE ${Math.floor(bananaAmount)} BANANAS`;
 });
 
 /**
@@ -43,18 +43,16 @@ class GameItem {
     }
     
     /**
-     * Buys a new item and increases the cost (DOESN'T DECREASE YOUR AMOUNT OF BANANA'S)
-     * @param {number} bananaAmount 
+     * Increases the amount of items and the cost (DOESN'T DECREASE YOUR AMOUNT OF BANANAS)
+     * @param {number} amount 
      */
-    buy(bananaAmount) {
-        if (bananaAmount >= this.cost) {
-            this.amount++;
-            this.cost = this.cost + (this.cost / 2);
-    
-            this.button.innerHTML = `${this.name}, cost: ${this.cost} bananas, amount: ${this.amount}`;
-        }
+    increase() {
+        this.amount++;
+        this.cost = this.cost + (this.cost / 10);
+        this.button.innerHTML = `${this.name}, cost: ${this.cost.toFixed(2)} bananas, amount: ${this.amount}, bps: ${this.bananaPerSecond}`;
     }
 }
+    
 
 // The button to buy the tree
 const bananaTreeButton = document.getElementById('bananaTreeButton');
@@ -63,12 +61,10 @@ const bananaTreeButton = document.getElementById('bananaTreeButton');
 const bananaTree = new GameItem(10, "banana tree", 0.5, bananaTreeButton);
 
 // Buys a tree on click of the buy button
-bananaTreeButton.addEventListener('click', () => {  
-    bananaTree.buy(bananaAmount);
-    bananaAmount =- bananaTree.cost;
-
-    if (bananaAmount < 0) {
-        bananaAmount = 0;
+bananaTreeButton.addEventListener('click', () => {
+    if (bananaAmount >= bananaTree.cost) {
+        bananaAmount -= bananaTree.cost;
+        bananaTree.increase();
     }
 })
 
@@ -78,33 +74,46 @@ const bananaFarmButton = document.getElementById('bananaFarmButton');
 const bananaFarm = new GameItem(50, "banana farm", 2, bananaFarmButton);
 
 // Buys a farm on click of the buy button
-bananaFarmButton.addEventListener('click', () => {  
-    bananaFarm.buy(bananaAmount);
-    bananaAmount =- bananaFarm.cost;
-
-    if (bananaAmount < 0) {
-        bananaAmount = 0;
+bananaFarmButton.addEventListener('click', () => {  ;
+    if (bananaAmount >= bananaFarm.cost) {
+        bananaAmount -= bananaFarm.cost;
+        bananaFarm.increase()
     }
-})
+});
+  
+
+    
 
 const labourButton = document.getElementById("labourButton");
 
-const slaveLabour = new GameItem(200, "minion labour", 20, labourButton);
+const slaveLabour = new GameItem(200, "minion labour", 10, labourButton);
 
 // Buys a slave on click of the buy button
 labourButton.addEventListener('click', () => {  
-    slaveLabour.buy(bananaAmount);
-    bananaAmount =- slaveLabour.cost;
-
-    if (bananaAmount < 0) {
-        bananaAmount = 0;
+    if (bananaAmount >= slaveLabour.cost) {
+        bananaAmount -= slaveLabour.cost;
+        slaveLabour.increase(bananaAmount);
     }
 })
 
+let eatenBananas = 0;
+
 // Increases your bananas by your BPS every second
 setInterval(() => {
-    bananaAmount = bananaAmount + bananaTree.profit();
-    bananaAmount = bananaAmount + bananaFarm.profit();
-    bananaAmount = bananaAmount + slaveLabour.profit();
-    bananaCounter.innerHTML = `THE MINION HAS EATEN ${bananaAmount} BANANAS`;
-}, 1000)
+    // Displays your bps
+    const bps = bananaFarm.profit() + bananaTree.profit() + slaveLabour.profit();
+    const bpsCounter = document.getElementById('bpsCounter');
+    bpsCounter.innerHTML = `${bps} bananas per second`;
+
+    bananaAmount += bps;
+    
+    if (!bps == 0) {
+        const bananasEatenPerSecond = bps / 3;
+        bananaAmount -= bananasEatenPerSecond;
+        const bananasEatenCounter = document.getElementById('eatenBananasCount');
+        eatenBananas += bananasEatenPerSecond;
+        bananasEatenCounter.innerHTML = `THE MINION HAS EATEN ${Math.floor(eatenBananas)} BANANAS`
+    }
+
+    bananaCounter.innerHTML = `YOU HAVE ${Math.floor(bananaAmount)} BANANAS`;
+}, 1000);
