@@ -83,10 +83,22 @@ bananaFarmButton.addEventListener('click', () => {  ;
     }
 });
 
+const importButton = document.getElementById('importButton');
+
+const importedBananas = new GameItem(1000, "import bananas", 5, importButton);
+
+// Buys imported bananas when pressed
+importButton.addEventListener('click', () => {  
+    if (bananaAmount >= importedBananas.cost) {
+        bananaAmount -= importedBananas.cost;
+        importedBananas.increase();
+        bepsMultiplier = 1.01;
+    }
+})
 
 const labourButton = document.getElementById("labourButton");
 
-const slaveLabour = new GameItem(1000, "minion labour", 5, labourButton);
+const slaveLabour = new GameItem(1000, "minion labour", 10, labourButton);
 
 // Buys a slave on click of the buy button
 labourButton.addEventListener('click', () => {  
@@ -99,26 +111,13 @@ labourButton.addEventListener('click', () => {
 
 const humanButton = document.getElementById('humanButton');
 
-const humanLabour = new GameItem(10000, "human labour", 10, humanButton)
+const humanLabour = new GameItem(10000, "human labour", 50, humanButton)
 
 // Buys a human slave on click of the buy button
 humanButton.addEventListener('click', () => {  
     if (bananaAmount >= humanLabour.cost) {
         bananaAmount -= humanLabour.cost;
         humanLabour.increase();
-        bepsMultiplier = 1.01;
-    }
-})
-
-const importButton = document.getElementById('importButton');
-
-const importedBananas = new GameItem(100000, "import bananas", 50, importButton);
-
-// Buys imported bananas when pressed
-importButton.addEventListener('click', () => {  
-    if (bananaAmount >= importedBananas.cost) {
-        bananaAmount -= importedBananas.cost;
-        importedBananas.increase();
         bepsMultiplier = 1.01;
     }
 })
