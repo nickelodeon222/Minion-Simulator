@@ -125,6 +125,8 @@ humanButton.addEventListener('click', () => {
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
 
+const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour];
+
 // Increases your bananas by your BPS every second
 const loop = setInterval(() => {
     // Displays your bps
@@ -155,4 +157,10 @@ const loop = setInterval(() => {
         clearInterval(loop);
         bananaAmount = 0;   
     }
+
+    allItems.forEach(item => {
+        if (bananaAmount >= item.cost / 2 && item.button.hidden) {
+            item.button.hidden = false;
+        } 
+    })
 }, 1000);
