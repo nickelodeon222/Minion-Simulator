@@ -3,6 +3,9 @@ const feedButton = document.getElementById("feedMinion");
 const minionSong = new Howl({
 src: ['minion.mp3']
 });
+const vectorSound = new Howl({
+    src: ['ah-curse-you-tiny-toilet.mp3']
+})
 
 let bananaAmount = 0;
 
@@ -122,15 +125,28 @@ humanButton.addEventListener('click', () => {
     }
 })
 
+const vectorButton = document.getElementById('vectorButton');
+
+const killVector = new GameItem(1000000, 'kill vector', 100, vectorButton);
+
+vectorButton.addEventListener('click', () => {  
+    if (bananaAmount >= killVector.cost) {
+        bananaAmount -= killVector.cost;
+        killVector.increase();
+        bepsMultiplier = 1.01;
+        vectorSound.play();
+    }
+})
+
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
 
-const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour];
+const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector];
 
 // Increases your bananas by your BPS every second
 const loop = setInterval(() => {
     // Displays your bps
-    const bps = bananaFarm.profit() + bananaTree.profit() + slaveLabour.profit() + humanLabour.profit() + importedBananas.profit();
+    const bps = bananaFarm.profit() + bananaTree.profit() + slaveLabour.profit() + humanLabour.profit() + importedBananas.profit() + killVector.profit();
     const bpsCounter = document.getElementById('bpsCounter');
     bpsCounter.innerHTML = `${bps} bananas per second`;
 
