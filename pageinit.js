@@ -85,9 +85,9 @@ let bepsMultiplier = 1.01;
 
 const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector];
 
-if (document.cookie) {
-    load();
-}
+save();
+load();
+
 
 // code for saving and cookies
 function setCookie(cname, cvalue)  {
