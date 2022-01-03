@@ -127,7 +127,7 @@ humanButton.addEventListener('click', () => {
 
 const vectorButton = document.getElementById('vectorButton');
 
-const killVector = new GameItem(1000000, 'kill vector', 100, vectorButton);
+const killVector = new GameItem(500000, 'kill vector', 100, vectorButton);
 
 vectorButton.addEventListener('click', () => {  
     if (bananaAmount >= killVector.cost) {
