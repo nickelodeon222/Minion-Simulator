@@ -83,11 +83,9 @@ const killVector = new GameItem(500000, 'kill vector', 100, vectorButton);
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
 
-document.cookie = '';
-
 const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector];
 
-if (!document.cookie == '') {
+if (document.cookie) {
     load();
 }
 
