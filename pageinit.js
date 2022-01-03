@@ -68,17 +68,17 @@ const importedBananas = new GameItem(500, "import bananas", 5, importButton);
 
 const labourButton = document.getElementById("labourButton");
 
-const slaveLabour = new GameItem(5000, "minion labour", 10, labourButton);
+const slaveLabour = new GameItem(1000, "minion labour", 10, labourButton);
 
 
 const humanButton = document.getElementById('humanButton');
 
-const humanLabour = new GameItem(500000, "human labour", 50, humanButton);
+const humanLabour = new GameItem(5000, "human labour", 50, humanButton);
 
 
 const vectorButton = document.getElementById('vectorButton');
 
-const killVector = new GameItem(1000000, 'kill vector', 100, vectorButton);
+const killVector = new GameItem(100000, 'kill vector', 100, vectorButton);
 
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
