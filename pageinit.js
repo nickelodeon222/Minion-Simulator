@@ -58,36 +58,36 @@ const bananaTree = new GameItem(10, "banana tree", 0.5, bananaTreeButton);
 const bananaFarmButton = document.getElementById('bananaFarmButton');
 
 // Creates an item called the banana farm with 2 bps
-const bananaFarm = new GameItem(200, "banana farm", 2, bananaFarmButton);
+const bananaFarm = new GameItem(100, "banana farm", 2, bananaFarmButton);
 
 
 const importButton = document.getElementById('importButton');
 
-const importedBananas = new GameItem(1000, "import bananas", 5, importButton);
+const importedBananas = new GameItem(500, "import bananas", 5, importButton);
 
 
 const labourButton = document.getElementById("labourButton");
 
-const slaveLabour = new GameItem(1000, "minion labour", 10, labourButton);
+const slaveLabour = new GameItem(5000, "minion labour", 10, labourButton);
 
 
 const humanButton = document.getElementById('humanButton');
 
-const humanLabour = new GameItem(10000, "human labour", 50, humanButton);
+const humanLabour = new GameItem(500000, "human labour", 50, humanButton);
 
 
 const vectorButton = document.getElementById('vectorButton');
 
-const killVector = new GameItem(500000, 'kill vector', 100, vectorButton);
+const killVector = new GameItem(1000000, 'kill vector', 100, vectorButton);
 
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
 
 const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector];
 
-save();
-load();
-
+if (document.cookie) {
+    load();
+}
 
 // code for saving and cookies
 function setCookie(cname, cvalue)  {
