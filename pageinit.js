@@ -77,10 +77,12 @@ const humanLabour = new GameItem(5000, "human labour", 50, document.getElementBy
 
 const killVector = new GameItem(10000, 'kill vector', 100, document.getElementById('vectorButton'));
 
+const balls = new GameItem(50000, 'balls', 500, document.getElementById('ballsButton'));
+
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
 
-const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector];
+const allItems = [bananaTree, bananaFarm, importedBananas, slaveLabour, humanLabour, killVector, balls];
 
 if (document.cookie) {
     load();

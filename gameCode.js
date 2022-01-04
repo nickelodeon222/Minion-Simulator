@@ -25,7 +25,14 @@ resetButton.addEventListener("click", () => {
 // Increases your bananas by your BPS every second
 const loop = setInterval(() => {
     // Displays your bps
-    const bps = bananaFarm.profit() + bananaTree.profit() + slaveLabour.profit() + humanLabour.profit() + importedBananas.profit() + killVector.profit();
+    let bps = 0;
+    allItems.forEach(item => {
+        bps += item.profit();
+        if (bananaAmount >= item.cost / 2 && item.button.hidden) {
+            item.button.hidden = false;
+        } 
+    })
+    
     const bpsCounter = document.getElementById('bpsCounter');
     bpsCounter.innerHTML = `${bps} bananas per second`;
 
@@ -53,10 +60,5 @@ const loop = setInterval(() => {
         bananaAmount = 0;   
     }
 
-    allItems.forEach(item => {
-        if (bananaAmount >= item.cost / 2 && item.button.hidden) {
-            item.button.hidden = false;
-        } 
-    })
 }, 1000);
 
