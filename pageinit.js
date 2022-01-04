@@ -8,6 +8,11 @@ const vectorSound = new Howl({
 })
 let bananaAmount = 0;
 
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // true for mobile device)
+    document.querySelector("div").style = '';
+}
+
 /**
  * Class that represents an item in the game
  */
