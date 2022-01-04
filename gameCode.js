@@ -69,9 +69,13 @@ saveButton.addEventListener("click", () => {
 const resetButton = document.getElementById('resetButton');
 
 resetButton.addEventListener("click", () => {
-    document.cookie.split(';').forEach(c => {
-        document.cookie = c.trim().split('=')[0] + '=;' + 'expires=Thu, 01 Jan 1970 00:00:00 UTC;';
-      });
+    // document.cookie.split(';').forEach(c => {
+    //     document.cookie = c.trim().split('=')[0] + '=;' + 'expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    //   });
+    if (window.confirm('are you sure you want to delete it?')) {
+        deleteSave();
+        location.reload();
+    }
 });
 
 // Increases your bananas by your BPS every second

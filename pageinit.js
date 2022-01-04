@@ -34,6 +34,7 @@ let bananaAmount = 0;
         this.name = name;
         this.bananaPerSecond = bps;
         this.button = button
+        this.baseCost = startingCost;
     }
     
     /**
@@ -102,6 +103,16 @@ function save() {
     })
     setCookie('eatenBananas', eatenBananas);
     setCookie('multiplier', bepsMultiplier);
+}
+
+function deleteSave() {
+    setCookie('bananas', 0);
+    allItems.forEach(item => {
+        setCookie(`${item.name}Amount`, 0);
+        setCookie(`${item.name}Price`, item.baseCost);
+    })
+    setCookie('eatenBananas', 0);
+    setCookie('multiplier', 1.01);
 }
 
 function load() {
