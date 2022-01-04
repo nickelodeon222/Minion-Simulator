@@ -6,59 +6,6 @@ feedButton.addEventListener('click', () => {
     bananaCounter.innerHTML = `YOU HAVE ${Math.floor(bananaAmount)} BANANAS`;
 });
 
-// Buys a tree on click of the buy button
-bananaTree.button.addEventListener('click', () => {
-    if (bananaAmount >= bananaTree.cost) {
-        bananaAmount -= bananaTree.cost;
-        bananaTree.increase();
-        bepsMultiplier = 1.01;
-    }
-})
-
-// Buys a farm on click of the buy button
-bananaFarm.button.addEventListener('click', () => {  ;
-    if (bananaAmount >= bananaFarm.cost) {
-        bananaAmount -= bananaFarm.cost;
-        bananaFarm.increase()
-        bepsMultiplier = 1.01;
-    }
-});
-
-// Buys imported bananas when pressed
-importedBananas.button.addEventListener('click', () => {  
-    if (bananaAmount >= importedBananas.cost) {
-        bananaAmount -= importedBananas.cost;
-        importedBananas.increase();
-        bepsMultiplier = 1.01;
-    }
-})
-
-// Buys a slave on click of the buy button
-slaveLabour.button.addEventListener('click', () => {  
-    if (bananaAmount >= slaveLabour.cost) {
-        bananaAmount -= slaveLabour.cost;
-        slaveLabour.increase();
-        bepsMultiplier = 1.01;
-    }
-})
-
-// Buys a human slave on click of the buy button
-humanLabour.button.addEventListener('click', () => {  
-    if (bananaAmount >= humanLabour.cost) {
-        bananaAmount -= humanLabour.cost;
-        humanLabour.increase();
-        bepsMultiplier = 1.01;
-    }
-})
-
-killVector.button.addEventListener('click', () => {  
-    if (bananaAmount >= killVector.cost) {
-        bananaAmount -= killVector.cost;
-        killVector.increase();
-        bepsMultiplier = 1.01;
-        vectorSound.play();
-    }
-})
 
 const saveButton = document.getElementById('saveButton');
 
