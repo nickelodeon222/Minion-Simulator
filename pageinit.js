@@ -79,7 +79,7 @@ const humanLabour = new GameItem(5000, "human labour", 50, humanButton);
 
 const vectorButton = document.getElementById('vectorButton');
 
-const killVector = new GameItem(100000, 'kill vector', 100, vectorButton);
+const killVector = new GameItem(10000, 'kill vector', 100, vectorButton);
 
 let eatenBananas = 0;
 let bepsMultiplier = 1.01;
