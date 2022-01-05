@@ -90,7 +90,7 @@ Game.bepsMultiplier = 1.01;
 Game.allItems = [Game.bananaTree, Game.bananaFarm, Game.importedBananas, Game.slaveLabour, Game.humanLabour, Game.killVector, Game.balls];
 
 if (document.cookie) {
-    load();
+    Game.load();
 }
 
 // code for saving and cookies
