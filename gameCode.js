@@ -9,7 +9,7 @@ feedButton.addEventListener('click', () => {
 const saveButton = document.getElementById('saveButton');
 
 saveButton.addEventListener("click", () => {
-    save();
+    Game.save();
 });
 
 const resetButton = document.getElementById('resetButton');
