@@ -47,7 +47,7 @@ Game.GameItem = class {
             if (Game.bananaAmount >= this.cost) {
                 Game.bananaAmount -= this.cost;
                 this.increase();
-                bepsMultiplier = 1.01;
+                Game.bepsMultiplier = 1.01;
             }
         });
     }

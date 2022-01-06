@@ -40,7 +40,7 @@ const loop = setInterval(() => {
     // if your bps doesn't equal zero, the minion eats the bananas, and the beps is shown
     if (!bps == 0) {
         const bananasEatenPerSecond = bps / 3 * Game.bepsMultiplier;
-        bepsMultiplier *= 1.001;
+        Game.bepsMultiplier *= 1.001;
         Game.bananaAmount -= bananasEatenPerSecond;
         Game.eatenBananas += bananasEatenPerSecond;
 
