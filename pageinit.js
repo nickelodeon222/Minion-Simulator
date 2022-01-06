@@ -44,8 +44,8 @@ Game.GameItem = class {
         this.baseCost = startingCost;
 
         this.button.addEventListener('click', () => {
-            if (bananaAmount >= this.cost) {
-                bananaAmount -= this.cost;
+            if (Game.bananaAmount >= this.cost) {
+                Game.bananaAmount -= this.cost;
                 this.increase();
                 bepsMultiplier = 1.01;
             }
@@ -88,10 +88,6 @@ Game.eatenBananas = 0;
 Game.bepsMultiplier = 1.01;
 
 Game.allItems = [Game.bananaTree, Game.bananaFarm, Game.importedBananas, Game.slaveLabour, Game.humanLabour, Game.killVector, Game.balls];
-
-if (document.cookie) {
-    Game.load();
-}
 
 // code for saving and cookies
 function setCookie(cname, cvalue)  {
@@ -146,4 +142,8 @@ function getCookie(cname) {
     }
     }
     return "";
+}
+
+if (document.cookie) {
+    Game.load();
 }
