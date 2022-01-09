@@ -1,10 +1,14 @@
+//@ts-check
+
 const Game = {};
 
 const bananaCounter = document.getElementById("bananaCount");
 const feedButton = document.getElementById("feedMinion");
+// @ts-ignore
 Game.minionSong = new Howl({
 src: ['minion.mp3']
 });
+// @ts-ignore
 Game.vectorSound = new Howl({
     src: ['ah-curse-you-tiny-toilet.mp3']
 })
@@ -12,7 +16,7 @@ Game.bananaAmount = 0;
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // true for mobile device)
-    document.querySelector("div").style = '';
+    document.querySelector(".mainDiv").className = "classlessDiv";
 }
 
 /**
@@ -23,7 +27,6 @@ Game.GameItem = class {
 
     /**
      * The amount of bananas you will have after each second with this item
-     * @param {number} bananaAmount 
      */
     profit() {
         return this.amount * this.bananaPerSecond;
@@ -31,17 +34,17 @@ Game.GameItem = class {
 
     /**
      * Creates a new item
-     * @param {number} startingCost The base price of your item 
+     * @param {number} baseCost The base price of your item 
      * @param {string} name The name of your item 
      * @param {number} bps The bananas per second one of this item makes
      * @param {HTMLElement} button The button that displays the cost and amount of your item
      */
-    constructor(startingCost, name, bps, button) {
-        this.cost = startingCost;
+    constructor(baseCost, name, bps, button) {
+        this.cost = baseCost;
         this.name = name;
         this.bananaPerSecond = bps;
         this.button = button
-        this.baseCost = startingCost;
+        this.baseCost = baseCost;
 
         this.button.addEventListener('click', () => {
             if (Game.bananaAmount >= this.cost) {
@@ -54,7 +57,6 @@ Game.GameItem = class {
     
     /**
      * Increases the amount of items and the cost (DOESN'T DECREASE YOUR AMOUNT OF BANANAS)
-     * @param {number} amount 
      */
     increase() {
         this.amount++;
@@ -123,7 +125,7 @@ Game.load = () => {
             item.cost = item.baseCost + (item.cost / 10);
         }
 
-        item.button.innerHTML = `${item.name}, amount: ${item.amount}, cost: ${item.cost} bananas, bps: ${item.bananaPerSecond}`
+        item.button.innerHTML = `${item.name}, amount: ${item.amount}, cost: ${item.cost} bananas, bps: ${item.bananaPerSecond}`;
     })
     
 }
