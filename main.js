@@ -23,6 +23,21 @@ resetButton.addEventListener("click", () => {
     }
 });
 
+let minionIsYellow = true;
+
+document.getElementById('colourButton').addEventListener('click', () => {
+    if (minionIsYellow) {
+        // @ts-ignore
+        document.getElementById('minionImage').src = 'minion-purple.jpg'
+        minionIsYellow = false;
+    }
+    else {
+        // @ts-ignore
+        document.getElementById('minionImage').src = 'minion.jpg'
+        minionIsYellow = true;
+    }
+});
+
 // Increases your bananas by your BPS every second
 const loop = setInterval(() => {
     // Displays your bps
