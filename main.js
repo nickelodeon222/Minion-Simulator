@@ -38,6 +38,21 @@ document.getElementById('colourButton').addEventListener('click', () => {
     }
 });
 
+document.getElementById('nameMinionButton').addEventListener('click', () => {
+    const nameInput = document.querySelector('#minionNamer');
+
+    // @ts-ignore
+    if (Game.minionName == nameInput.value) {
+        Game.minionName = 'Jacob';
+        document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
+    }
+    else {
+    // @ts-ignore
+        Game.minionName = nameInput.value;
+        document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
+    }
+});
+
 // Increases your bananas by your BPS every second
 const loop = setInterval(() => {
     // Displays your bps

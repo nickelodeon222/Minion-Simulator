@@ -4,6 +4,7 @@ const Game = {};
 
 const bananaCounter = document.getElementById("bananaCount");
 const feedButton = document.getElementById("feedMinion");
+Game.minionName = 'Jacob';
 // @ts-ignore
 Game.minionSong = new Howl({
 src: ['minion.mp3']
@@ -103,6 +104,7 @@ Game.save = () => {
     })
     setCookie('eatenBananas', Game.eatenBananas);
     setCookie('multiplier', Game.bepsMultiplier);
+    setCookie('name', Game.minionName);
 }
 
 Game.deleteSave = () => {
@@ -113,12 +115,17 @@ Game.deleteSave = () => {
     })
     setCookie('eatenBananas', 0);
     setCookie('multiplier', 1.01);
+    setCookie('name', "Jacob");
 }
 
 Game.load = () => {
     Game.bananaAmount = parseFloat(getCookie('bananas'));
     Game.eatenBananas = parseFloat(getCookie('eatenBananas'));
     Game.bepsMultiplier = parseFloat(getCookie('multiplier'));
+    Game.minionName = getCookie('name');
+    document.getElementById('')
+    document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
+
     Game.allItems.forEach(item => {
         item.amount = parseInt(getCookie(`${item.name}Amount`));
         for (let i = 0; i < item.amount; i++) {
