@@ -42,14 +42,14 @@ document.getElementById('nameMinionButton').addEventListener('click', () => {
     const nameInput = document.querySelector('#minionNamer');
 
     // @ts-ignore
-    if (Game.minionName == nameInput.value) {
-        Game.minionName = 'Jacob';
-        document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
-    }
-    else {
-    // @ts-ignore
-        Game.minionName = nameInput.value;
-        document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
+    if (nameInput.value != '') {
+        // @ts-ignore
+        nameInput.placeholder = nameInput.value.toUpperCase();
+        // @ts-ignore
+        Game.minionName = nameInput.value.toUpperCase();
+        // @ts-ignore
+        nameInput.value = '';
+        document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName}`;
     }
 });
 

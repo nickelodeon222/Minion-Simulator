@@ -4,7 +4,7 @@ const Game = {};
 
 const bananaCounter = document.getElementById("bananaCount");
 const feedButton = document.getElementById("feedMinion");
-Game.minionName = 'Jacob';
+Game.minionName = 'JACOB';
 // @ts-ignore
 Game.minionSong = new Howl({
 src: ['minion.mp3']
@@ -115,16 +115,17 @@ Game.deleteSave = () => {
     })
     setCookie('eatenBananas', 0);
     setCookie('multiplier', 1.01);
-    setCookie('name', "Jacob");
+    setCookie('name', "JACOB");
 }
 
 Game.load = () => {
     Game.bananaAmount = parseFloat(getCookie('bananas'));
     Game.eatenBananas = parseFloat(getCookie('eatenBananas'));
     Game.bepsMultiplier = parseFloat(getCookie('multiplier'));
-    Game.minionName = getCookie('name');
-    document.getElementById('')
-    document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName.toUpperCase()}`;
+    Game.minionName = getCookie('name').toUpperCase();
+    // @ts-ignore
+    document.getElementById('minionNamer').placeholder = Game.minionName;
+    document.getElementById('nameDisplay').innerHTML = `THE MINION'S NAME IS ${Game.minionName}`;
 
     Game.allItems.forEach(item => {
         item.amount = parseInt(getCookie(`${item.name}Amount`));
@@ -142,13 +143,14 @@ function getCookie(cname) {
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-    }
+        let c = ca[i];
+
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+         }
     }
     return "";
 }
