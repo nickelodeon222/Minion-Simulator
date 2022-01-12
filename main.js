@@ -11,7 +11,13 @@ feedButton.addEventListener('click', () => {
 const saveButton = document.getElementById('saveButton');
 
 saveButton.addEventListener("click", () => {
-    Game.save();
+    try {
+        Game.save();
+        alert('saved!!!');
+    }
+    catch (err) {
+        alert('save no work');
+    }
 });
 
 const resetButton = document.getElementById('resetButton');

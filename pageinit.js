@@ -94,7 +94,7 @@ Game.allItems = [Game.bananaTree, Game.bananaFarm, Game.importedBananas, Game.sl
 
 // code for saving and cookies
 function setCookie(cname, cvalue)  {
-    document.cookie = cname + "=" + cvalue + "; path=/";
+    document.cookie = cname + "=" + cvalue + "; SameSite=strict; path=/";
 }
   
 Game.save = () => {
@@ -138,6 +138,9 @@ Game.load = () => {
     
 }
 
+/**
+ * @param {string} cname
+ */
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
