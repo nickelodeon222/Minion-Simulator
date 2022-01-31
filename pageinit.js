@@ -20,6 +20,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     document.querySelector(".mainDiv").className = "classlessDiv";
 }
 
+Game.allItems = [];
+
 /**
  * Class that represents an item in the game
  */
@@ -40,6 +42,7 @@ Game.GameItem = class {
      * @param {number} bps The bananas per second one of this item makes
      */
     constructor(baseCost, name, bps/*, button*/) {
+        Game.allItems.push(this);
         this.cost = baseCost;
         this.name = name;
         this.bananaPerSecond = bps;
@@ -90,8 +93,6 @@ Game.balls = new Game.GameItem(50000, 'balls', 500);
 
 Game.eatenBananas = 0;
 Game.bepsMultiplier = 1.01;
-
-Game.allItems = [Game.bananaTree, Game.bananaFarm, Game.importedBananas, Game.slaveLabour, Game.humanLabour, Game.killVector, Game.balls];
 
 // code for saving and cookies
 /**
