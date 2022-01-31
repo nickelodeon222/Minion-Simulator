@@ -15,10 +15,6 @@ Game.vectorSound = new Howl({
 })
 Game.bananaAmount = 0;
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // true for mobile device)
-    document.querySelector(".mainDiv").className = "classlessDiv";
-}
 
 Game.allItems = [];
 
@@ -41,7 +37,7 @@ Game.GameItem = class {
      * @param {string} name The name of your item 
      * @param {number} bps The bananas per second one of this item makes
      */
-    constructor(baseCost, name, bps/*, button*/) {
+    constructor(baseCost, name, bps) {
         Game.allItems.push(this);
         this.cost = baseCost;
         this.name = name;

@@ -2,17 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="viewport" content="width=device-width, max-device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
         <title>minion simulator</title>
         <style>
-            .mainDiv {
-                align-items: center;
-                position: absolute;
-                top: 60%;
-                left: 50%;
-                margin-right: -50%;
-                transform: translate(-50%, -50%);
+            @media only screen and (min-device-width: 768px) {
+                .mainDiv {
+                    position: fixed;
+                    left: 40%;
+                }
             }
 
             body {
@@ -21,7 +19,7 @@
 
             ul {
                 list-style-type: none;
-            }
+            }   
         </style>
     </head>
 
@@ -42,36 +40,8 @@
             <button id="feedMinion">FEED THE MINION</button>
 
             <button id="colourButton">MAKE THE MINION PURPLE</button>
-            <ul>
-                <!-- <li>
-                    <button id="bananaTreeButton">banana tree, cost: 10 bananas, amount: 0, bps: 0.5</button>
-                </li>
 
-                <li>
-                    <button id="bananaFarmButton" hidden>banana farm, cost: 100 bananas, amount: 0, bps: 2</button>
-                </li>
-
-                <li>
-                    <button id='importButton' hidden>import bananas, cost: 500 bananas, amount: 0, bps: 5</button>
-                </li>
-
-                <li>
-                    <button id="labourButton" hidden>minion labour, cost: 1000 bananas, amount: 0, bps: 10</button>
-                </li>
-
-                <li>
-                    <button id="humanButton" hidden>human labour, cost: 5000 bananas, amount 0, bps: 50</button>
-                </li>
-
-                <li>
-                    <button id='vectorButton' hidden>kill vector, cost: 10000 bananas, amount 0, bps: 100</button>
-                </li>
-
-                <li>
-                    <button id='ballsButton' hidden>balls, cost: 50000 bananas, amount 0, bps: 500</button>
-                </li> -->
-                
-            </ul>
+            <ul></ul>
 
             <input type="text" placeholder="JACOB" id='minionNamer'></input>
             <button type="button" id='nameMinionButton'>CHANGE THE MINION'S NAME</button>
