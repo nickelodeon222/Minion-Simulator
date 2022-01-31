@@ -65,8 +65,10 @@ const loop = setInterval(() => {
     let bps = 0;
     Game.allItems.forEach(item => {
         bps += item.profit();
-        if (Game.bananaAmount >= item.cost / 2 && item.button.hidden) {
-            item.button.hidden = false;
+        if (Game.bananaAmount >= item.cost / 2 && !document.contains(item.button)) {
+            const li = document.createElement('li');
+            document.querySelector("ul").appendChild(li);
+            li.appendChild(item.button);
         } 
     })
     

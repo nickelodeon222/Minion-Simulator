@@ -38,14 +38,15 @@ Game.GameItem = class {
      * @param {number} baseCost The base price of your item 
      * @param {string} name The name of your item 
      * @param {number} bps The bananas per second one of this item makes
-     * @param {HTMLElement} button The button that displays the cost and amount of your item
      */
-    constructor(baseCost, name, bps, button) {
+    constructor(baseCost, name, bps/*, button*/) {
         this.cost = baseCost;
         this.name = name;
         this.bananaPerSecond = bps;
-        this.button = button
         this.baseCost = baseCost;
+        this.button = document.createElement('button');
+
+        this.button.innerHTML = `${this.name}, cost: ${this.cost.toFixed(2)} bananas, amount: ${this.amount}, bps: ${this.bananaPerSecond}`;
 
         this.button.addEventListener('click', () => {
             if (Game.bananaAmount >= this.cost) {
@@ -62,7 +63,7 @@ Game.GameItem = class {
     increase() {
         this.amount++;
         for (let i = 0; i < this.amount; i++) {
-            this.cost = this.baseCost + (this.cost / 10);
+            this.cost += this.cost / 10;
         }
         this.button.innerHTML = `${this.name}, cost: ${this.cost.toFixed(2)} bananas, amount: ${this.amount}, bps: ${this.bananaPerSecond}`;
         if (this.name === 'killVector') {
@@ -72,20 +73,20 @@ Game.GameItem = class {
 }
     
 // Creates an item called the banana tree with 0.5 bps
-Game.bananaTree = new Game.GameItem(10, "banana tree", 0.5, document.getElementById('bananaTreeButton'));
+Game.bananaTree = new Game.GameItem(10, "banana tree", 0.5);
 
 // Creates an item called the banana farm with 2 bps
-Game.bananaFarm = new Game.GameItem(100, "banana farm", 2, document.getElementById('bananaFarmButton'));
+Game.bananaFarm = new Game.GameItem(100, "banana farm", 2);
 
-Game.importedBananas = new Game.GameItem(500, "import bananas", 5, document.getElementById('importButton'));
+Game.importedBananas = new Game.GameItem(500, "import bananas", 5);
 
-Game.slaveLabour = new Game.GameItem(1000, "minion labour", 10, document.getElementById("labourButton"));
+Game.slaveLabour = new Game.GameItem(1000, "minion labour", 10);
 
-Game.humanLabour = new Game.GameItem(5000, "human labour", 50, document.getElementById('humanButton'));
+Game.humanLabour = new Game.GameItem(5000, "human labour", 50);
 
-Game.killVector = new Game.GameItem(10000, 'kill vector', 100, document.getElementById('vectorButton'));
+Game.killVector = new Game.GameItem(10000, 'kill vector', 100);
 
-Game.balls = new Game.GameItem(50000, 'balls', 500, document.getElementById('ballsButton'));
+Game.balls = new Game.GameItem(50000, 'balls', 500);
 
 Game.eatenBananas = 0;
 Game.bepsMultiplier = 1.01;
@@ -93,6 +94,10 @@ Game.bepsMultiplier = 1.01;
 Game.allItems = [Game.bananaTree, Game.bananaFarm, Game.importedBananas, Game.slaveLabour, Game.humanLabour, Game.killVector, Game.balls];
 
 // code for saving and cookies
+/**
+ * @param {string} cname
+ * @param {any} cvalue
+ */
 function setCookie(cname, cvalue)  {
     document.cookie = cname + "=" + cvalue + "; SameSite=strict; path=/";
 }
@@ -129,11 +134,17 @@ Game.load = () => {
 
     Game.allItems.forEach(item => {
         item.amount = parseInt(getCookie(`${item.name}Amount`));
+        item.cost = item.baseCost;
         for (let i = 0; i < item.amount; i++) {
-            item.cost = item.baseCost + (item.cost / 10);
+            item.cost += item.cost / 10;
         }
 
         item.button.innerHTML = `${item.name}, amount: ${item.amount}, cost: ${item.cost} bananas, bps: ${item.bananaPerSecond}`;
+        if (item.amount >= 1) {
+            const li = document.createElement('li');
+            document.querySelector("ul").appendChild(li);
+            li.appendChild(item.button);
+        }
     })
     
 }
@@ -158,6 +169,6 @@ function getCookie(cname) {
     return "";
 }
 
-if (document.cookie) {
+if (document.cookie !== '') {
     Game.load();
 }
