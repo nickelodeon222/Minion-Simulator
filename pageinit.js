@@ -16,6 +16,9 @@ Game.vectorSound = new Howl({
 Game.bananaAmount = 0;
 
 
+/**
+ * @type {Game.GameItem[]}
+ */
 Game.allItems = [];
 
 /**

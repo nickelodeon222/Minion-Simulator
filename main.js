@@ -100,3 +100,9 @@ const loop = setInterval(() => {
     }
 
 }, 1000);
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'q') {
+        alert('q? more like POO POO! /j\nThat was a roast imo.')
+    }
+})
