@@ -105,4 +105,10 @@ document.addEventListener('keydown', event => {
     if (event.key === 'q') {
         alert('q? more like POO POO! /j\nThat was a roast imo.')
     }
+    else if (event.key === 'j') {
+        const jToFuck = confirm('j to fuck?');
+        if (jToFuck) {
+            alert('big dog');
+        }
+    }
 })
