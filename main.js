@@ -30,17 +30,21 @@ resetButton.addEventListener("click", () => {
 });
 
 let minionIsYellow = true;
+const purpleButton = document.getElementById('colourButton');
 
-document.getElementById('colourButton').addEventListener('click', () => {
+purpleButton.addEventListener('click', () => {
     if (minionIsYellow) {
         // @ts-ignore
-        document.getElementById('minionImage').src = 'minion-purple.jpg'
+        document.getElementById('minionImage').src = 'minion-purple.jpg';
         minionIsYellow = false;
+        purpleButton.innerHTML = "MAKE THE MINION YELLOW";
+        
     }
     else {
         // @ts-ignore
         document.getElementById('minionImage').src = 'minion.jpg'
         minionIsYellow = true;
+        purpleButton.innerHTML = "MAKE THE MINION PURPLE";
     }
 });
 
