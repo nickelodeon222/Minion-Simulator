@@ -8,8 +8,10 @@
         <style>
             @media only screen and (min-device-width: 768px) {
                 .mainDiv {
-                    position: fixed;
+                    position: relative;
                     left: 40%;
+                    right: 60%;
+                    width: 500px;
                 }
             }
 
@@ -19,7 +21,15 @@
 
             ul {
                 list-style-type: none;
-            }   
+            }
+
+            h3 {
+                text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+            }
+
+            h4 {
+                text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+            }
         </style>
     </head>
 
@@ -36,10 +46,11 @@
             <h4 id='nameDisplay'>THE MINION'S NAME IS JACOB</h4>
 
             <img id='minionImage' width="271" height="318" src="minion.jpg" alt="minion">
+            
             <br>
-            <button id="feedMinion">FEED THE MINION</button>
+            <button type="button" id="feedMinion">FEED THE MINION</button>
 
-            <button id="colourButton">MAKE THE MINION PURPLE</button>
+            <button type="button" id="colourButton">MAKE THE MINION PURPLE</button>
 
             <ul></ul>
 
